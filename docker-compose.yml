@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: 
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: back
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - PYTHONPATH=/app
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"  # Nginx 기본 포트 80을 호스트의 3000번 포트에 매핑
+    depends_on:
+      - backend
