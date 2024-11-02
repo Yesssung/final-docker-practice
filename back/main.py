@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from mongodb_config import counter_collection
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -40,22 +40,4 @@ def decrement_count():
 def read_root():
     return {"message": "Hello, Docker with FastAPI!"}
 
-
-
-# import os
-# from back.mongodb_config import db
-# from fastapi.middleware.cors import CORSMiddleware
-
-# app = FastAPI()
-
-
-
-# # CORS 설정
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],  # 모든 출처에서 요청 허용
-#     allow_credentials=True,
-#     allow_methods=["*"],  # 모든 HTTP 메소드 허용
-#     allow_headers=["*"],  # 모든 HTTP 헤더 허용
-# )
 
